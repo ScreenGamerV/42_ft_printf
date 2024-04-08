@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_intcount.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtoroyan <vtoroyan@student.42yerevan.am>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 18:35:41 by vtoroyan          #+#    #+#             */
-/*   Updated: 2024/01/26 20:04:18 by vtoroyan         ###   ########.fr       */
+/*   Created: 2024/02/25 18:29:49 by vtoroyan          #+#    #+#             */
+/*   Updated: 2024/02/25 18:39:47 by vtoroyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_bzero(void *b, size_t len)
+int	ft_intcount(unsigned int value)
 {
-	unsigned char	*cast;
-	size_t			count;
+	int	count;
 
 	count = 0;
-	cast = (unsigned char *)b;
-	while (count < len)
+	while (value >= 10)
 	{
-		cast[count] = 0;
+		value /= 10;
 		count++;
 	}
-	return (b);
+	return (count + 1);
 }

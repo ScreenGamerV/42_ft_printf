@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_printint_unsigned.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtoroyan <vtoroyan@student.42yerevan.am>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 20:08:40 by vtoroyan          #+#    #+#             */
-/*   Updated: 2024/02/01 20:16:20 by vtoroyan         ###   ########.fr       */
+/*   Created: 2024/02/25 18:36:01 by vtoroyan          #+#    #+#             */
+/*   Updated: 2024/02/28 17:24:57 by vtoroyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_printint_unsigned(unsigned int value)
 {
-	if (n == -2147483648)
-		write(fd, "-2147483648", 11);
-	else if (n < 0)
+	int		count;
+	char	*num;
+
+	count = 0;
+	num = (char *)malloc((ft_intcount(value) + 1) * sizeof(char));
+	if (num == NULL)
+		return (0);
+	while (value >= 10)
 	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(-n, fd);
+		num[count] = value % 10 + '0';
+		value /= 10;
+		count++;
 	}
-	else if (n < 10)
-		ft_putchar_fd((n + '0'), fd);
-	else
-	{
-		ft_putnbr_fd((n / 10), fd);
-		ft_putnbr_fd((n % 10), fd);
-	}
+	num[count++] = value + '0';
+	num[count] = '\0';
+	count = ft_printarr(count, num);
+	free(num);
+	return (count);
 }

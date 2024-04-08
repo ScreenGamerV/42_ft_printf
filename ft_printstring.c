@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_printstring.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtoroyan <vtoroyan@student.42yerevan.am>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 19:36:58 by vtoroyan          #+#    #+#             */
-/*   Updated: 2024/02/03 19:51:07 by vtoroyan         ###   ########.fr       */
+/*   Created: 2024/02/25 19:05:48 by vtoroyan          #+#    #+#             */
+/*   Updated: 2024/02/25 19:06:42 by vtoroyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+int	ft_printstring(char *value)
 {
-	if (!new)
-		return ;
-	new -> next = *lst;
-	*lst = new;
+	int	count;
+
+	count = 0;
+	if (value == NULL)
+	{
+		write (1, "(null)", sizeof(char) * 6);
+		return (6);
+	}
+	while (value[count] != '\0')
+	{
+		write (1, &value[count], sizeof(char));
+		count++;
+	}
+	return (ft_strlen(value));
 }

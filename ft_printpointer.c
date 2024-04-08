@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_printpointer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtoroyan <vtoroyan@student.42yerevan.am>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 20:00:53 by vtoroyan          #+#    #+#             */
-/*   Updated: 2024/02/01 20:07:16 by vtoroyan         ###   ########.fr       */
+/*   Created: 2024/02/25 18:36:46 by vtoroyan          #+#    #+#             */
+/*   Updated: 2024/02/25 18:37:03 by vtoroyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_printpointer(char index, unsigned long long value)
 {
 	int	count;
 
-	count = 0;
-	if (s)
-	{
-		while (s[count] != '\0')
-		{
-			write (fd, &s[count], sizeof(char));
-			count++;
-		}
-		write (fd, "\n", sizeof(char));
-	}
+	count = 2;
+	write (1, "0x", sizeof(char) * 2);
+	count += ft_printhexadecimal(index, value);
+	return (count);
 }

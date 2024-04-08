@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_printarr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtoroyan <vtoroyan@student.42yerevan.am>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 18:38:21 by vtoroyan          #+#    #+#             */
-/*   Updated: 2024/02/05 18:44:08 by vtoroyan         ###   ########.fr       */
+/*   Created: 2024/02/25 18:31:32 by vtoroyan          #+#    #+#             */
+/*   Updated: 2024/02/25 18:32:04 by vtoroyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+int	ft_printarr(int size, char *arr)
 {
-	while (lst != NULL)
+	int	count;
+
+	count = size - 1;
+	while (count >= 0)
 	{
-		f(lst -> content);
-		lst = lst -> next;
+		write (1, &arr[count], sizeof(char));
+		count--;
 	}
+	return (size);
 }

@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vtoroyan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vtoroyan <vtoroyan@student.42yerevan.am>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 19:16:03 by vtoroyan          #+#    #+#             */
-/*   Updated: 2024/01/27 13:57:46 by vtoroyan         ###   ########.fr       */
+/*   Created: 2024/02/25 18:32:19 by vtoroyan          #+#    #+#             */
+/*   Updated: 2024/02/25 18:32:29 by vtoroyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_printchar(char value)
 {
-	size_t	count;
-
-	count = 0;
-	while (str[count] != '\0')
-		count++;
-	return (count);
+	write (1, &value, sizeof(char));
+	return (1);
 }
